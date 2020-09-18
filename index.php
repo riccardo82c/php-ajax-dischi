@@ -39,6 +39,7 @@ include __DIR__ .'/dischi-db.php';
 			<div class="disc"></div>
 			<div class="disc"></div>
 			<div class="disc"></div>
+
 		</main>
 
 
