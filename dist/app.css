@@ -1,3 +1,7 @@
+/* colors */
+
+/* font size */
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +22,7 @@ body .container {
 }
 
 header {
-  height: 80px;
+  height: 100px;
   width: 100%;
   background-color: #424e52;
   display: flex;
@@ -32,12 +36,14 @@ header nav {
   /* background-color: lighten($head-bcg, 10%); */
 }
 
-header nav img {
-  height: 100%;
+header nav .logo {
+  font-size: 45px;
+  margin-left: 20px;
+  color: #1f262b;
 }
 
 header {
-  height: 80px;
+  height: 100px;
   width: 100%;
   background-color: #424e52;
   display: flex;
@@ -51,8 +57,10 @@ header nav {
   /* background-color: lighten($head-bcg, 10%); */
 }
 
-header nav img {
-  height: 100%;
+header nav .logo {
+  font-size: 45px;
+  margin-left: 20px;
+  color: #1f262b;
 }
 
 main {
@@ -65,10 +73,36 @@ main {
 }
 
 main .disc {
+  padding: 10px 10px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: #909da2;
   background-color: #1f262b;
+  border: 1px solid #59696e;
 }
 
-@media all and (max-width: 700px) {
+main .disc img {
+  width: 220px;
+  height: 65%;
+}
+
+main .disc h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+main .disc h4 {
+  font-size: 19.2px;
+}
+
+main .disc h5 {
+  font-size: 14.4px;
+}
+
+@media all and (max-width: 720px) {
   main {
     grid-template-columns: 300px;
     grid-auto-rows: 450px;

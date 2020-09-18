@@ -9,8 +9,36 @@ main {
 	gap: 20px;
 
 	.disc {
+		padding: 10px 10px 20px 10px;
 
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+		text-align: center;
+		color: $font-light;
 		background-color: $body-bcg;
+		border: 1px solid lighten($head-bcg, 10%);
+
+		img {
+			width: 220px;
+			height: 65%;
+		}
+
+		h3 {
+			font-size: $h3-fs;
+			font-weight: 600;
+		}
+
+		h4 {
+			font-size: $h4-fs;
+		}
+
+		h5 {
+			font-size: $h5-fs;
+		}
 
 	}
 }
