@@ -9,13 +9,13 @@ header {
 	nav {
 		height: 50%;
 		width: 100%;
-		border-bottom: 1px solid lighten($head-bcg, 10%);
+		border-bottom: 1px solid $head-bcg-light;
 		/* background-color: lighten($head-bcg, 10%); */
 
 		.logo {
 			font-size: 45px;
 			margin-left: 20px;
-			color: $body-bcg;
+			color: $logo;
 		}
 
 	}

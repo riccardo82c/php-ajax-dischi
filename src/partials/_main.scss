@@ -21,23 +21,32 @@ main {
 		color: $font-light;
 		background-color: $body-bcg;
 		border: 1px solid lighten($head-bcg, 10%);
+		box-shadow: $disc-sha;
+
+
 
 		img {
 			width: 220px;
 			height: 65%;
+
+
 		}
 
 		h3 {
 			font-size: $h3-fs;
-			font-weight: 600;
+			color: $font-special;
+			font-weight: 700;
+
 		}
 
 		h4 {
 			font-size: $h4-fs;
+			font-weight: 300;
 		}
 
 		h5 {
 			font-size: $h5-fs;
+			font-weight: 400;
 		}
 
 	}

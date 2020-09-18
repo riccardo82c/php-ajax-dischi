@@ -1,18 +1,5 @@
 <?php
-
 include __DIR__ .'/dischi-db.php';
-/* var_dump($database); */
-
-foreach ($database as $value) {
-}
-
-/*  'title'
-   'author'
-   'year'
-   'poster' */
-
-
-  
 ?>
 
 
@@ -31,43 +18,22 @@ foreach ($database as $value) {
 <body>
 
 	<div class="container">
-
 		<header>
 			<nav>
 				<i class="fab fa-spotify logo"></i>
-				<!-- <img src="https://www.freepnglogos.com/uploads/spotify-logo-png/icon-spotify-pace-house-2.png"
-					alt="icon spotify pace house" />
- -->
 			</nav>
-
 		</header>
-
 		<main>
-
-
-		<?php foreach ($database as $value) { ?>
-			
+			<?php foreach ($database as $value) : ?>
 			<div class="disc">
-
-				<img src="<?php echo $value['poster'] ?>" alt="" srcset="">
-
-				<h3><?php echo $value['title'] ?></h3>
-
-				<h4><?php echo $value['author'];?></h4>
-
-				<h5><?php echo $value['year'];?></h5>
+				<img src="<?= $value['poster'] ?>" alt="" srcset="">
+				<h3><?= $value['title'] ?></h3>
+				<h4><?= $value['author'];?></h4>
+				<h5><?= $value['year'];?></h5>
 			</div>
-
-		<?php } ?>			
-		
-
+			<?php endforeach ?>
 		</main>
-
-
 	</div>
-
-
-
 </body>
 
 </html>
