@@ -1,0 +1,22 @@
+header {
+	height: 50px;
+	width: 100%;
+	background-color: $head-bcg;
+	display: flex;
+	align-items: center;
+
+
+	nav {
+		height: 50%;
+		width: 100%;
+		border-bottom: 1px solid lighten($head-bcg, 10%);
+		/* background-color: lighten($head-bcg, 10%); */
+
+		img {
+			height: 100%;
+		}
+
+	}
+
+
+}
