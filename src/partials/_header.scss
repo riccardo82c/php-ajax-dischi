@@ -1,21 +1,18 @@
 header {
-	height: 100px;
-	width: 100%;
-	background-color: $head-bcg;
-	display: flex;
-	align-items: center;
+	height: $head-hg;
 
+	background-color: $head-bcg;
+	@include flex(row, flex-start, center);
 
 	nav {
 		height: 50%;
 		width: 100%;
 		border-bottom: 1px solid $head-bcg-light;
-		/* background-color: lighten($head-bcg, 10%); */
 
 		.logo {
-			font-size: 45px;
-			margin-left: 20px;
-			color: $logo;
+			font-size: $logo-fs;
+			margin-left: $margin-md;
+			color: $logo-color;
 		}
 
 	}

@@ -27,6 +27,7 @@ include __DIR__ .'/dischi-db.php';
 			<?php foreach ($database as $value) : ?>
 			<div class="disc">
 				<img src="<?= $value['poster'] ?>" alt="" srcset="">
+				<div class='divider'></div>
 				<h3><?= $value['title'] ?></h3>
 				<h4><?= $value['author'];?></h4>
 				<h5><?= $value['year'];?></h5>
