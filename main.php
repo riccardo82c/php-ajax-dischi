@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 include __DIR__ .'/dischi-db.php';
 ?>
 
@@ -37,4 +37,4 @@ include __DIR__ .'/dischi-db.php';
 	</div>
 </body>
 
-</html>
+</html> -->

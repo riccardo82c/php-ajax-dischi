@@ -1,5 +1,3 @@
-/* let $ = require(jquery); */
-
 $(function () {
 	ajaxCall();
 });
@@ -11,7 +9,6 @@ function ajaxCall() {
 		method: 'GET',
 		success: function (response) {
 			allDisc(response);
-			/* filter(response); */
 		},
 		error: function () {
 			console.log('Errore!');
@@ -28,10 +25,3 @@ function allDisc(data) {
 		$('main').append(html);
 	});
 }
-
-/* function filter(data) {
-	console.log(data[0]['author']);
-
-	
-
-} */

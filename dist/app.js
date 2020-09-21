@@ -86,14 +86,66 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src sync recursive":
+/*!******************!*\
+  !*** ./src sync ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	var e = new Error("Cannot find module '" + req + "'");
+	e.code = 'MODULE_NOT_FOUND';
+	throw e;
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = "./src sync recursive";
+
+/***/ }),
+
 /***/ "./src/app.js":
 /*!********************!*\
   !*** ./src/app.js ***!
   \********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+var $ = __webpack_require__("./src sync recursive")(jquery);
 
+$(function () {
+  ajaxCall();
+});
+
+function ajaxCall() {
+  $.ajax({
+    url: "http://localhost/php-ajax-dischi/dischi-db.php",
+    method: 'GET',
+    success: function success(response) {
+      allDisc(response);
+      /* filter(response); */
+    },
+    error: function error() {
+      console.log('Errore!');
+    }
+  });
+}
+
+function allDisc(data) {
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  data.forEach(function (element) {
+    var html = template(element);
+    $('main').append(html);
+  });
+}
+/* function filter(data) {
+	console.log(data[0]['author']);
+
+	
+
+} */
 
 /***/ }),
 
