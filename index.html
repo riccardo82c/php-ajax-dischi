@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="dist/app.css">
+	<link rel="stylesheet" href="dist/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -21,9 +21,6 @@
 					<!-- insert filter options -->
 				</select>
 			</nav>
-
-
-
 		</header>
 		<main>
 			<!-- insert each disc  -->
@@ -31,7 +28,7 @@
 	</div>
 
 
-	<script id="entry-template" type="text/x-handlebars-template">
+	<script id="disc-template" type="text/x-handlebars-template">
 	<div class="disc">
 		<img src="{{poster}}" alt="" srcset="">
 		<div class='divider'></div>
@@ -41,12 +38,12 @@
 	</div>
 	</script>
 
-	<script id="entry-template2" type="text/x-handlebars-template">
-		<option value="">{{author}}</option>
+	<script id="filter-template" type="text/x-handlebars-template">
+		<option value="{{author}}">{{author}}</option>
 	</script>
 
 
-	<script src="src/app.js" charset="utf-8"></script>
+	<script src="src/script.js" charset="utf-8"></script>
 </body>
 
 </html>

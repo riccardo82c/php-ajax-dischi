@@ -86,45 +86,47 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src sync recursive":
-/*!******************!*\
-  !*** ./src sync ***!
-  \******************/
+/***/ "./src/script.js":
+/*!***********************!*\
+  !*** ./src/script.js ***!
+  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = "./src sync recursive";
-
-/***/ }),
-
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("./src sync recursive")(jquery);
-
+/* let $ = require(jquery); */
 $(function () {
-  ajaxCall();
+  ajaxCall('All');
+  filterCall();
+  $('#filter').change(function () {
+    var valore = $('#filter').val();
+    $('main').empty();
+    ajaxCall(valore);
+    console.log(valore);
+  });
 });
 
-function ajaxCall() {
+function ajaxCall(data) {
   $.ajax({
-    url: "http://localhost/php-ajax-dischi/dischi-db.php",
+    url: "http://localhost/php-ajax-dischi/server.php",
     method: 'GET',
+    data: {
+      author: data
+    },
     success: function success(response) {
       allDisc(response);
-      /* filter(response); */
+    },
+    error: function error() {
+      console.log('Errore!');
+    }
+  });
+}
+
+function filterCall() {
+  $.ajax({
+    url: "http://localhost/php-ajax-dischi/server.php",
+    method: 'GET',
+    success: function success(response) {
+      filter(response);
     },
     error: function error() {
       console.log('Errore!');
@@ -133,26 +135,42 @@ function ajaxCall() {
 }
 
 function allDisc(data) {
-  var source = $("#entry-template").html();
+  var source = $("#disc-template").html();
   var template = Handlebars.compile(source);
   data.forEach(function (element) {
     var html = template(element);
     $('main').append(html);
   });
 }
-/* function filter(data) {
-	console.log(data[0]['author']);
 
-	
-
-} */
+function filter(data) {
+  var filterAuthor = [];
+  data.forEach(function (element) {
+    !filterAuthor.includes(element['author']) ? filterAuthor.push(element['author']) : '';
+  });
+  console.log(filterAuthor);
+  var source = $("#filter-template").html();
+  var template = Handlebars.compile(source);
+  var context = {
+    author: 'All'
+  };
+  var html = template(context);
+  $('#filter').append(html);
+  filterAuthor.forEach(function (element) {
+    var context = {
+      author: element
+    };
+    var html = template(context);
+    $('#filter').append(html);
+  });
+}
 
 /***/ }),
 
-/***/ "./src/app.scss":
-/*!**********************!*\
-  !*** ./src/app.scss ***!
-  \**********************/
+/***/ "./src/style.scss":
+/*!************************!*\
+  !*** ./src/style.scss ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -161,14 +179,14 @@ function allDisc(data) {
 /***/ }),
 
 /***/ 0:
-/*!*****************************************!*\
-  !*** multi ./src/app.js ./src/app.scss ***!
-  \*****************************************/
+/*!**********************************************!*\
+  !*** multi ./src/script.js ./src/style.scss ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\WEB\Repo\php-ajax-dischi\src\app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! D:\WEB\Repo\php-ajax-dischi\src\app.scss */"./src/app.scss");
+__webpack_require__(/*! D:\WEB\Repo\php-ajax-dischi\src\script.js */"./src/script.js");
+module.exports = __webpack_require__(/*! D:\WEB\Repo\php-ajax-dischi\src\style.scss */"./src/style.scss");
 
 
 /***/ })

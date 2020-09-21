@@ -1,16 +1,45 @@
 /* let $ = require(jquery); */
 
 $(function () {
-	ajaxCall();
+	ajaxCall('All');
+	filterCall();
+
+	$('#filter').change(function () {
+
+		let valore = $('#filter').val();
+		$('main').empty();
+		ajaxCall(valore);
+		console.log(valore);
+	})
+
 });
 
 
-function ajaxCall() {
+function ajaxCall(data) {
 	$.ajax({
-		url: `http://localhost/php-ajax-dischi/dischi-db.php`,
+		url: `http://localhost/php-ajax-dischi/server.php`,
 		method: 'GET',
+		data: {
+			author: data
+		},
 		success: function (response) {
 			allDisc(response);
+
+
+		},
+		error: function () {
+			console.log('Errore!');
+		}
+	});
+}
+
+
+function filterCall() {
+	$.ajax({
+		url: `http://localhost/php-ajax-dischi/server.php`,
+		method: 'GET',
+		success: function (response) {
+
 			filter(response);
 		},
 		error: function () {
@@ -21,7 +50,7 @@ function ajaxCall() {
 
 
 function allDisc(data) {
-	let source = $("#entry-template").html();
+	let source = $("#disc-template").html();
 	let template = Handlebars.compile(source);
 	data.forEach(element => {
 		let html = template(element);
@@ -37,7 +66,7 @@ function filter(data) {
 	});
 	console.log(filterAuthor);
 
-	let source = $("#entry-template2").html();
+	let source = $("#filter-template").html();
 	let template = Handlebars.compile(source);
 	let context = {
 		author: 'All'
