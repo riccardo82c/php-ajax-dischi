@@ -11,7 +11,7 @@ function ajaxCall() {
 		method: 'GET',
 		success: function (response) {
 			allDisc(response);
-			/* filter(response); */
+			filter(response);
 		},
 		error: function () {
 			console.log('Errore!');
@@ -29,9 +29,32 @@ function allDisc(data) {
 	});
 }
 
-/* function filter(data) {
-	console.log(data[0]['author']);
+function filter(data) {
 
-	
+	let filterAuthor = [];
+	data.forEach(element => {
+		!filterAuthor.includes(element['author']) ? filterAuthor.push(element['author']) : '';
+	});
+	console.log(filterAuthor);
 
-} */
+	let source = $("#entry-template2").html();
+	let template = Handlebars.compile(source);
+	let context = {
+		author: 'All'
+	};
+
+	let html = template(context);
+	$('#filter').append(html);
+
+	filterAuthor.forEach(element => {
+
+		let context = {
+			author: element
+		};
+
+		let html = template(context);
+		$('#filter').append(html);
+	});
+
+
+}
