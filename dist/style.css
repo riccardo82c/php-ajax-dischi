@@ -8,8 +8,6 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  /* height: 100vh; */
-  width: 100%;
   background: #1f262b;
 }
 
@@ -35,12 +33,21 @@ header nav {
   height: 50%;
   width: 100%;
   border-bottom: 1px solid #59696e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header nav .logo {
   font-size: 45px;
   margin-left: 20px;
   color: #1f262b;
+}
+
+header nav #filter {
+  margin-right: 20px;
+  width: 150px;
 }
 
 header {
@@ -56,12 +63,21 @@ header nav {
   height: 50%;
   width: 100%;
   border-bottom: 1px solid #59696e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header nav .logo {
   font-size: 45px;
   margin-left: 20px;
   color: #1f262b;
+}
+
+header nav #filter {
+  margin-right: 20px;
+  width: 150px;
 }
 
 main {

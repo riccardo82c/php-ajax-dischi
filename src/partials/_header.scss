@@ -8,11 +8,17 @@ header {
 		height: 50%;
 		width: 100%;
 		border-bottom: 1px solid $head-bcg-light;
+		@include flex(row, space-between, center);
 
 		.logo {
 			font-size: $logo-fs;
 			margin-left: $margin-md;
 			color: $logo-color;
+		}
+
+		#filter {
+			margin-right: $margin-md;
+			width: 150px;
 		}
 
 	}
