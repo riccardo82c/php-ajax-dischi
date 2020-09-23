@@ -84,7 +84,7 @@ main {
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  grid-template-columns: repeat(auto-fit, 300px);
   justify-content: center;
   grid-auto-rows: 450px;
   gap: 20px;
@@ -130,13 +130,4 @@ main .disc h5 {
   font-size: 16px;
   font-weight: 400;
 }
-
-/* @media all and (max-width: 720px) {
-
-	main {
-		grid-template-columns: 300px;
-		grid-auto-rows: 450px;
-		justify-content: center;
-	}
-} */
 

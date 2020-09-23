@@ -1,31 +1,35 @@
-/* let $ = require(jquery); */
+/* Per permettere il funzionamento di Jquery e HB con i moduli installati */
+const $ = require('jquery');
+const Handlebars = require('handlebars');
+
+/* Costante location per la location corrente del mio server virtuale */
+const hostname = window.location.hostname;
+const protocol = window.location.protocol;
+const port = window.location.port;
+const location = `${protocol}//${hostname}/${port}`;
 
 $(function () {
-	ajaxCall('All');
-	filterCall();
-
+	ajaxCallDisc();
+	ajaxCallFilter();
 	$('#filter').change(function () {
-
-		let valore = $('#filter').val();
+		let valore = $(this).val();
 		$('main').empty();
-		ajaxCall(valore);
-		console.log(valore);
+		ajaxCallDisc(valore);
 	})
-
 });
 
+/* Functions */
 
-function ajaxCall(data) {
+// chiamata ajax al database
+function ajaxCallDisc(data) {
 	$.ajax({
-		url: `http://localhost/php-ajax-dischi/server.php`,
+		url: `${location}php-ajax-dischi/server.php`,
 		method: 'GET',
 		data: {
 			author: data
 		},
 		success: function (response) {
-			allDisc(response);
-
-
+			getDisc(response);
 		},
 		error: function () {
 			console.log('Errore!');
@@ -33,13 +37,22 @@ function ajaxCall(data) {
 	});
 }
 
+// estrapolazione dalla richiesta ajax dell'array corrispondete all'elemento selezionato in select (autore)
+function getDisc(data) {
+	let source = $("#disc-template").html();
+	let template = Handlebars.compile(source);
+	data.forEach(element => {
+		let html = template(element);
+		$('main').append(html);
+	});
+}
 
-function filterCall() {
+// chiamata ajax per la richiesta del db
+function ajaxCallFilter() {
 	$.ajax({
-		url: `http://localhost/php-ajax-dischi/server.php`,
+		url: `${location}php-ajax-dischi/server.php`,
 		method: 'GET',
 		success: function (response) {
-
 			filter(response);
 		},
 		error: function () {
@@ -49,41 +62,21 @@ function filterCall() {
 }
 
 
-function allDisc(data) {
-	let source = $("#disc-template").html();
-	let template = Handlebars.compile(source);
-	data.forEach(element => {
-		let html = template(element);
-		$('main').append(html);
-	});
-}
-
+// estrapolazione dal db degli autori senza duplicati ed inserimento di essi nella select nel DOM
 function filter(data) {
-
+	console.log(data);
 	let filterAuthor = [];
-	data.forEach(element => {
-		!filterAuthor.includes(element['author']) ? filterAuthor.push(element['author']) : '';
-	});
-	console.log(filterAuthor);
-
 	let source = $("#filter-template").html();
 	let template = Handlebars.compile(source);
-	let context = {
-		author: 'All'
-	};
 
-	let html = template(context);
-	$('#filter').append(html);
-
-	filterAuthor.forEach(element => {
-
-		let context = {
-			author: element
-		};
-
-		let html = template(context);
-		$('#filter').append(html);
+	data.forEach(element => {
+		if (!filterAuthor.includes(element['author'])) {
+			filterAuthor.push(element['author']);
+			let context = {
+				author: element['author']
+			};
+			let html = template(context);
+			$('#filter').append(html);
+		}
 	});
-
-
 }

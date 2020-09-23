@@ -2,7 +2,7 @@ main {
 	width: 100%;
 	padding: $margin-md;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+	grid-template-columns: repeat(auto-fit, 300px);
 	justify-content: center;
 	grid-auto-rows: 450px;
 	gap: $margin-md;
