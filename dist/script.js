@@ -16112,7 +16112,7 @@ $(function () {
 
 function ajaxCallDisc(data) {
   $.ajax({
-    url: "".concat(location, "php-ajax-dischi/server.php"),
+    url: "".concat(location, "Repo/php-ajax-dischi/server.php"),
     method: 'GET',
     data: {
       author: data
@@ -16139,7 +16139,7 @@ function getDisc(data) {
 
 function ajaxCallFilter() {
   $.ajax({
-    url: "".concat(location, "php-ajax-dischi/server.php"),
+    url: "".concat(location, "Repo/php-ajax-dischi/server.php"),
     method: 'GET',
     success: function success(response) {
       filter(response);

@@ -8,6 +8,7 @@ const protocol = window.location.protocol;
 const port = window.location.port;
 const location = `${protocol}//${hostname}/${port}`;
 
+
 $(function () {
 	ajaxCallDisc();
 	ajaxCallFilter();
@@ -23,7 +24,7 @@ $(function () {
 // chiamata ajax al database
 function ajaxCallDisc(data) {
 	$.ajax({
-		url: `${location}php-ajax-dischi/server.php`,
+		url: `${location}Repo/php-ajax-dischi/server.php`,
 		method: 'GET',
 		data: {
 			author: data
@@ -50,7 +51,7 @@ function getDisc(data) {
 // chiamata ajax per la richiesta del db
 function ajaxCallFilter() {
 	$.ajax({
-		url: `${location}php-ajax-dischi/server.php`,
+		url: `${location}Repo/php-ajax-dischi/server.php`,
 		method: 'GET',
 		success: function (response) {
 			filter(response);
